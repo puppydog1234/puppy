@@ -113,8 +113,18 @@ public class KeyInput
         if (key == 36) {
         	debug = true;
         }
-        if (key == 514);
-        }
+
+     // Add this inside your keyPressed method, after other key checks
+     if (key == 67) { // 67 is the key code for 'C'
+    	 try {
+    	        BufferedImage img = ImageIO.read(new File("catimage.jpg"));
+    	        ImageIcon icon = new ImageIcon(img);
+    	        game.g2.imageLabel.setIcon(icon); // mainWindow is your JFrame or main panel instance
+    	    } catch (IOException ex) {
+    	        ex.printStackTrace();
+    	    }
+     }
+
         if (key == 127) {
         	if (c1 != 1) {
               c1 += 1;
@@ -153,7 +163,7 @@ public class KeyInput
           if (key == 32)
           this.handler2.addObject(new arrow(tempObject.getX(), tempObject.getY(), ID.ARROW, this.handler2)); 
         
-      } 
+      }} 
       } 
   
 
