@@ -51,8 +51,16 @@ public class Player
       
       e.printStackTrace();
     }  
-    this.handler2.addObject(new Trail(this.x, this.y, ID.Trail, Color.WHITE, 16, 16, 0.014F, this.handler2));
-  }
+	try {
+		if (KeyInput.nodamage) {
+			this.handler2.addObject(new Trail(this.x, this.y, ID.Trail, Color.RED, 32, 32, 0.05F, this.handler2));
+		} else {
+			this.handler2.addObject(new Trail(this.x, this.y, ID.Trail, Color.WHITE, 32, 32, 0.1F, this.handler2));
+		}
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}}
   
   private void collision() throws MalformedURLException, UnsupportedAudioFileException, IOException, LineUnavailableException {
     for (int i = 0; i < handler.object.size(); i++) {
@@ -80,7 +88,11 @@ public class Player
   
   public void render(Graphics g) {
     if (this.id == ID.Player) {
-      g.setColor(Color.white);
+    	if (!KeyInput.dashing) {
+    			g.setColor(Color.white);
+    	} else {
+    		g.setColor(Color.RED);
+    	}
     }
     g.fillRect((int)this.x, (int)this.y, 32, 32);
   }

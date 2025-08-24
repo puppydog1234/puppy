@@ -9,6 +9,8 @@ public class HUD
   public static int HEALTH = 300;
   private int c1 = 0;
   private int greenvalue = 255;
+  private int lastLevelChecked = 1;
+  private boolean staminaReduced = false;
   private Font fnt3;
   private int score = 0;
   public int won = 0;
@@ -16,13 +18,17 @@ public class HUD
   public static String customt;
   private int level = 1;
   private boolean soundplayed = false;
-  
+  public static double stanima = 1200;
   public void render(Graphics g, game.STATE gameState) {
-    this.greenvalue = (int)game.clamp(this.greenvalue, 0, 255);
+	    this.greenvalue = (int)game.clamp(this.greenvalue, 0, 255);
     g.setColor(Color.gray);
     g.fillRect(15, 15, 600, 32);
-    g.setColor(new Color(75, this.greenvalue, 0));
+    g.setColor(new Color(0, 255, 0));
     g.fillRect(15, 15, HEALTH * 2, 32);
+    g.setColor(Color.gray);
+    g.fillRect(15, 15*5, 600, 32);
+    g.setColor(new Color(75, this.greenvalue, 0));
+    g.fillRect(15, 15*5, (int)stanima /2, 32);
     g.setColor(Color.white);
     g.drawRect(15, 15, 600, 32);
     g.drawString("Score: " + this.score, 10, 68);
@@ -51,33 +57,35 @@ public class HUD
     }
   }
   
-  public void tick() throws Exception {
+
+public void tick() throws Exception {
     HEALTH = (int)game.clamp(HEALTH, 0, 300);
+    stanima = (int)game.clamp((int)stanima, 0, 1200);
     this.greenvalue = (int)game.clamp(this.greenvalue, 0, 255);
-    
+
     this.greenvalue = HEALTH * 2;
     this.score++;
-    if (HEALTH < 5 && 
-      !this.soundplayed) {
 
-
-
-
-
-
-      
-      Thread.currentThread().interrupt();
-
-
-
-      
-      try {
-        Thread.sleep(1000L);
-      } catch (InterruptedException e) {
+    if (KeyInput.isCapsLockOn) {
+    stanima = Math.max(0, stanima - 5);
+    }
+    if (stanima == 0) {
+    	KeyInput.isCapsLockOn2 = false;
+	}
+	if (stanima >= 1200) {
+		KeyInput.isCapsLockOn2 = true;
+	} if (stanima < 1200 && !KeyInput.isCapsLockOn2) {
+		stanima = Math.min(1200, stanima + 1);
+	}
+    if (HEALTH < 5 && !this.soundplayed) {
         Thread.currentThread().interrupt();
-      } 
-      System.exit(0);
-    } 
+        try {
+            Thread.sleep(1000L);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+        System.exit(0);
+    }
   }
   public void score(int score) {
     this.score = score;

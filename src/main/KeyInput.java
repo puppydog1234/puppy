@@ -33,12 +33,14 @@ import javax.swing.JLabel;
 public class KeyInput
   extends KeyAdapter
 {
+  public static boolean dashing = false;
   private handler handler2;
   public static boolean debug = false;
   private int c;
   private int pass1 = 0;
   private Random r;
-  
+  public static boolean isCapsLockOn = false;
+  public static boolean isCapsLockOn2 = true;
   public int booltoint(boolean convbool) {
     if (convbool) {
       return 1;
@@ -113,18 +115,9 @@ public class KeyInput
         if (key == 36) {
         	debug = true;
         }
-
-     // Add this inside your keyPressed method, after other key checks
-     if (key == 67) { // 67 is the key code for 'C'
-    	 try {
-    	        BufferedImage img = ImageIO.read(new File("catimage.jpg"));
-    	        ImageIcon icon = new ImageIcon(img);
-    	        game.g2.imageLabel.setIcon(icon); // mainWindow is your JFrame or main panel instance
-    	    } catch (IOException ex) {
-    	        ex.printStackTrace();
-    	    }
-     }
-
+        
+        isCapsLockOn = java.awt.Toolkit.getDefaultToolkit().getLockingKeyState(KeyEvent.VK_CAPS_LOCK);
+        nodamage = (isCapsLockOn && isCapsLockOn2);
         if (key == 127) {
         	if (c1 != 1) {
               c1 += 1;
