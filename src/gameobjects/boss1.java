@@ -1,9 +1,15 @@
-package main;
+package gameobjects;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Random;
+
+import main.ID;
+import main.Trail;
+import main.game;
+import main.gameObject;
+import main.handler;
 
 public class boss1
   extends gameObject {

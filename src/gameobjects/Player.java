@@ -1,4 +1,4 @@
-package main;
+package gameobjects;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -7,6 +7,14 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+
+import main.HUD;
+import main.ID;
+import main.KeyInput;
+import main.Trail;
+import main.game;
+import main.gameObject;
+import main.handler;
 
 
 

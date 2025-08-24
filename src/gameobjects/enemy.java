@@ -1,8 +1,14 @@
-package main;
+package gameobjects;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+
+import main.HUD;
+import main.ID;
+import main.Trail;
+import main.gameObject;
+import main.handler;
 
 public class enemy
   extends gameObject {

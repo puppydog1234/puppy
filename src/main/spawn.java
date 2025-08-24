@@ -2,6 +2,11 @@ package main;
 
 import java.util.Random;
 
+import gameobjects.boss1;
+import gameobjects.enemy;
+import gameobjects.fastenemy;
+import gameobjects.smartenemy;
+
 public class spawn
 {
   game game;
@@ -72,6 +77,5 @@ public class spawn
 
 public void ending() {
 	   KeyInput.nopedamage = true;
-	   this.handler.addObject(new enemyparent(100, 200, ID.EnemyParent, this.handler));
 }
 }

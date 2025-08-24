@@ -3,8 +3,10 @@ package main;
 import java.awt.Graphics;
 import java.util.LinkedList;
 
+import gameobjects.Player;
+
 public class handler {
-  static LinkedList<gameObject> object = new LinkedList<>();
+  public static LinkedList<gameObject> object = new LinkedList<>();
   public void tick() {
     for (int i = 0; i < object.size(); i++) {
       gameObject tempObject = object.get(i);
