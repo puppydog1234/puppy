@@ -5,11 +5,10 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Random;
 
-import main.ID;
-import main.Trail;
-import main.game;
-import main.gameObject;
-import main.handler;
+import logic.Trail;
+import logic.game;
+import logic.handler;
+import logic.enums.ID;
 
 public class boss1
   extends gameObject {

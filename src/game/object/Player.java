@@ -8,13 +8,12 @@ import java.net.MalformedURLException;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-import main.HUD;
-import main.ID;
-import main.KeyInput;
-import main.Trail;
-import main.game;
-import main.gameObject;
-import main.handler;
+import logic.KeyInput;
+import logic.Trail;
+import logic.game;
+import logic.handler;
+import logic.enums.ID;
+import logic.gui.HUD;
 
 
 

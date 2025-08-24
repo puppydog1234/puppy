@@ -4,10 +4,9 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import main.ID;
-import main.Trail;
-import main.gameObject;
-import main.handler;
+import logic.Trail;
+import logic.handler;
+import logic.enums.ID;
 
 public class smartenemy
   extends gameObject

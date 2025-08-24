@@ -5,10 +5,9 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Random;
 
-import main.ID;
-import main.Trail;
-import main.gameObject;
-import main.handler;
+import logic.Trail;
+import logic.handler;
+import logic.enums.ID;
 
 public class enemyBossBullet
   extends gameObject {
