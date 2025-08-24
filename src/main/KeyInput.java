@@ -1,16 +1,25 @@
 package main;
 
+import java.awt.Desktop;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Random;
+
+import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 
 
@@ -105,8 +114,7 @@ public class KeyInput
         	debug = true;
         }
         if (key == 514);
-
-        
+        }
         if (key == 127) {
         	if (c1 != 1) {
               c1 += 1;
@@ -146,8 +154,8 @@ public class KeyInput
           this.handler2.addObject(new arrow(tempObject.getX(), tempObject.getY(), ID.ARROW, this.handler2)); 
         
       } 
-    } 
-  }
+      } 
+  
 
 
 
