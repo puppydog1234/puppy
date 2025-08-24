@@ -21,7 +21,6 @@ public class Player
   extends gameObject
 {
   handler handler2;
-  
   public <F> Player(int x, int y, ID id, handler handler1) throws Exception {
     super(x, y, id);
     this.handler2 = handler1;
@@ -53,9 +52,9 @@ public class Player
     }  
 	try {
 		if (KeyInput.nodamage) {
-			this.handler2.addObject(new Trail(this.x, this.y, ID.Trail, Color.RED, 32, 32, 0.05F, this.handler2));
+			this.handler2.addObject(new Trail(this.x, this.y, ID.Trail, Color.RED, 16, 16, 0.04F, this.handler2));
 		} else {
-			this.handler2.addObject(new Trail(this.x, this.y, ID.Trail, Color.WHITE, 32, 32, 0.1F, this.handler2));
+			this.handler2.addObject(new Trail(this.x, this.y, ID.Trail, Color.WHITE, 16, 16, 0.04F, this.handler2));
 		}
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
@@ -67,7 +66,7 @@ public class Player
       gameObject tempObject = handler.object.get(i);
       if ((tempObject.getID() == ID.Enemy || tempObject.getID() == ID.fastenemy || tempObject.getID() == ID.smartenemy) && 
         getBounds().intersects(tempObject.getBounds()) && 
-        !KeyInput.nodamage) {
+        !KeyInput.nodamage && !KeyInput.nopedamage) {
         damage(5);
       }
       
@@ -94,12 +93,12 @@ public class Player
     		g.setColor(Color.RED);
     	}
     }
-    g.fillRect((int)this.x, (int)this.y, 32, 32);
+    g.fillRect((int)this.x, (int)this.y, 16, 16);
   }
 
 
   
   public Rectangle getBounds() {
-    return new Rectangle((int)this.x, (int)this.y, 32, 32);
+    return new Rectangle((int)this.x, (int)this.y, 16, 16);
   }
 }

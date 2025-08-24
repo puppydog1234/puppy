@@ -48,10 +48,12 @@ public class spawn
       if (this.hud.getLevel() >= 100) {
     	  if (game.gameState2 == main.game.STATE2.EASY) {
     	  this.hud.won += 1;
+    	  ending();
       }}
       if (this.hud.getLevel() >= 301) {
     	  if (game.gameState2 == main.game.STATE2.HARD) {
     	  this.hud.won += 1;
+    	  ending();
       }}
       if  (this.hud.getLevel() >= 68) {
     	  if (this.c2 == 25) {
@@ -68,4 +70,8 @@ public class spawn
       this.c2++;
     }  }
 
+public void ending() {
+	   KeyInput.nopedamage = true;
+	   this.handler.addObject(new enemyparent(100, 200, ID.EnemyParent, this.handler));
+}
 }

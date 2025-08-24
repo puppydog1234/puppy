@@ -7,16 +7,17 @@ import java.awt.Graphics;
 public class HUD
 {
   public static int HEALTH = 300;
-  private int c1 = 0;
+  public int c1 = 0;
   private int greenvalue = 255;
   private int lastLevelChecked = 1;
   private boolean staminaReduced = false;
   private Font fnt3;
+  private handler handler;
   private int score = 0;
   public int won = 0;
   private String won2 = "nope";
   public static String customt;
-  private int level = 1;
+  private int level = 98;
   private boolean soundplayed = false;
   public static double stanima = 1200;
   public void render(Graphics g, game.STATE gameState) {
@@ -36,22 +37,23 @@ public class HUD
     g.drawString("DID YOU WIN?: " + this.won2, 10, 102);
     if (main.KeyInput.debug) {
         g.drawString("debug mode", 10, 132);
-    }
+    } if (KeyInput.LORE)
+	{
+        fnt3 = new Font("arial", 1, 30);
+        g.setFont(fnt3);
+		g.drawString("the white sqaure is the kid", 10, 170);
+		g.drawString("the red sqaures are the bullies", 10, 190);
+		g.drawString("the bullies are trying to hurt the kid.", 10, 215);
+		g.drawString("RUN FROM THE BULLIES", 10, 245);
+	}
 
     if (won >= 1) {
     	won2 ="YES YOU WON!";
         fnt3 = new Font("arial", 1, 65);
         g.setFont(fnt3);
         g.setColor(Color.green);
-        g.drawString("DID YOU WIN?: YES", 2, 200);
+        g.drawString("YOU WON THE GAME", 2, 200);
     	if (c1 >= 4) {
-    	try {
-			Thread.sleep(10000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	System.exit(20);
     	}
     	c1++;
     }

@@ -8,5 +8,6 @@ public enum ID {
   smartenemy,
   goodPotion,
   boss1,
-  Enemy;
+  Enemy,
+  EnemyParent;
 }

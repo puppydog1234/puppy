@@ -39,6 +39,8 @@ public class KeyInput
   private int c;
   private int pass1 = 0;
   private Random r;
+  public static boolean nopedamage = false;
+  public static boolean LORE = false;
   public static boolean isCapsLockOn = false;
   public static boolean isCapsLockOn2 = true;
   public int booltoint(boolean convbool) {
@@ -115,7 +117,14 @@ public class KeyInput
         if (key == 36) {
         	debug = true;
         }
-        
+		if (key == 76) {
+			if (!LORE) {
+			LORE = true;
+		} else {
+			LORE = false;
+		}
+		}
+			
         isCapsLockOn = java.awt.Toolkit.getDefaultToolkit().getLockingKeyState(KeyEvent.VK_CAPS_LOCK);
         nodamage = (isCapsLockOn && isCapsLockOn2);
         if (key == 127) {
