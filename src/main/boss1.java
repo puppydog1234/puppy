@@ -1,0 +1,75 @@
+package main;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.util.Random;
+
+public class boss1
+  extends gameObject {
+  private handler handler;
+  private int timer = 80;
+  private int timer2 = 50;
+  Random r = new Random();
+  
+  public boss1(int x, int y, ID id, handler handler1) {
+    super(x, y, id);
+    
+    this.handler = handler1;
+
+    
+    this.velX = 0.0F;
+    this.velY = 2.0F;
+  }
+
+
+  
+  public void tick() {
+    this.x += this.velX;
+    this.y += this.velY;
+    if (this.timer <= 0) {
+      this.velY = 0.0F;
+    } else {
+      this.timer--;
+    } 
+    
+    if (this.timer <= 0) {
+      this.timer2--;
+    }
+    if (this.timer2 <= 0) {
+      if (this.velX == 0.0F) {
+        this.velX = 2.0F;
+      }
+      if (this.velX > 0.0F) {
+        this.velX += 0.005F;
+      } else if (this.velX < 0.0F) {
+        this.velX -= 0.005F;
+      } 
+      this.velX = game.clamp(this.velX, -10, 10);
+      
+      int spawn = this.r.nextInt(120);
+      if (spawn == 0) {
+          this.handler.addObject(new enemyBossBullet((int)this.x + 48, (int)this.y + 48, ID.Enemy, this.handler));
+          this.handler.addObject(new enemyBossBullet((int)this.x - 48, (int)this.y - 48, ID.Enemy, this.handler));
+      }
+    } 
+    
+    if (this.x <= 0.0F || this.x >= 544.0F) {
+      this.velX *= -1.0F;
+    }
+    this.handler.addObject(new Trail(this.x, this.y, ID.Trail, Color.red, 96, 96, 0.08F, this.handler));
+  }
+
+
+  
+  public void render(Graphics g) {
+    g.setColor(Color.red);
+    g.fillRect((int)this.x, (int)this.y, 96, 96);
+  }
+
+
+  
+  public Rectangle getBounds() {
+    return new Rectangle((int)this.x, (int)this.y, 96, 96);
+  }
+}
