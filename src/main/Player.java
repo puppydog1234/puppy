@@ -60,7 +60,7 @@ public class Player
       if ((tempObject.getID() == ID.Enemy || tempObject.getID() == ID.fastenemy || tempObject.getID() == ID.smartenemy) && 
         getBounds().intersects(tempObject.getBounds()) && 
         !KeyInput.nodamage) {
-        damage();
+        damage(5);
       }
       
       if (tempObject.getID() == ID.goodPotion && 
@@ -72,8 +72,8 @@ public class Player
     } 
   }
   
-  public static void damage() throws MalformedURLException, UnsupportedAudioFileException, IOException, LineUnavailableException {
-    HUD.HEALTH -= 5;
+  public static void damage(int d) throws MalformedURLException, UnsupportedAudioFileException, IOException, LineUnavailableException {
+    HUD.HEALTH -= d;
   }
 
 

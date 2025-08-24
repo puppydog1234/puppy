@@ -17,6 +17,7 @@ public class game
   private boolean running = false;
   private HUD hud;
   public Graphics g;
+  int frames2 = 0;
   public static Graphics g2;
   private spawn spawner;
   private handler handler;
@@ -100,6 +101,8 @@ public class game
       }  if (this.running)
         render(); 
       frames++;
+      frames2++;
+      
       if (System.currentTimeMillis() - timer > 1000L) {
         timer += 1000L;
         

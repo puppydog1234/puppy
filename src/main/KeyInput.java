@@ -27,6 +27,7 @@ public class KeyInput
   private handler handler2;
   public static boolean debug = false;
   private int c;
+  private int pass1 = 0;
   private Random r;
   
   public int booltoint(boolean convbool) {
@@ -85,7 +86,7 @@ public class KeyInput
         if (key == 51 && 
           this.debug) {
           try {
-            Player.damage();
+            Player.damage(5);
           } catch (MalformedURLException e1) {
             
             e1.printStackTrace();
@@ -107,8 +108,7 @@ public class KeyInput
 
         
         if (key == 127) {
-        	if (c1 <= 1) {
-            for (int i3 = 0; i3 < 3; i3++) {
+        	if (c1 != 1) {
               c1 += 1;
 	              this.handler2.addObject(new enemy(this.r.nextInt(640), this.r.nextInt(477), ID.Enemy, this.handler2));
 	              this.handler2.addObject(new enemy(this.r.nextInt(640), this.r.nextInt(477), ID.Enemy, this.handler2));
@@ -117,11 +117,34 @@ public class KeyInput
 	              this.handler2.addObject(new enemy(this.r.nextInt(640), this.r.nextInt(477), ID.Enemy, this.handler2));
 	              this.handler2.addObject(new enemy(this.r.nextInt(640), this.r.nextInt(477), ID.Enemy, this.handler2));
 	              this.handler2.addObject(new enemy(this.r.nextInt(640), this.r.nextInt(477), ID.Enemy, this.handler2));
+	              this.handler2.addObject(new enemy(this.r.nextInt(640), this.r.nextInt(477), ID.Enemy, this.handler2));
+	              this.handler2.addObject(new enemy(this.r.nextInt(640), this.r.nextInt(477), ID.Enemy, this.handler2));
+	              this.handler2.addObject(new enemy(this.r.nextInt(640), this.r.nextInt(477), ID.Enemy, this.handler2));
+	              this.handler2.addObject(new enemy(this.r.nextInt(640), this.r.nextInt(477), ID.Enemy, this.handler2)); this.handler2.addObject(new enemy(this.r.nextInt(640), this.r.nextInt(477), ID.Enemy, this.handler2));
+	              this.handler2.addObject(new enemy(this.r.nextInt(640), this.r.nextInt(477), ID.Enemy, this.handler2));
+	              this.handler2.addObject(new enemy(this.r.nextInt(640), this.r.nextInt(477), ID.Enemy, this.handler2));
+	              this.handler2.addObject(new enemy(this.r.nextInt(640), this.r.nextInt(477), ID.Enemy, this.handler2));
+	              this.handler2.addObject(new enemy(this.r.nextInt(640), this.r.nextInt(477), ID.Enemy, this.handler2));
+	              this.handler2.addObject(new enemy(this.r.nextInt(640), this.r.nextInt(477), ID.Enemy, this.handler2));
+	              this.handler2.addObject(new enemy(this.r.nextInt(640), this.r.nextInt(477), ID.Enemy, this.handler2));
+	              this.handler2.addObject(new enemy(this.r.nextInt(640), this.r.nextInt(477), ID.Enemy, this.handler2));
+	              this.handler2.addObject(new enemy(this.r.nextInt(640), this.r.nextInt(477), ID.Enemy, this.handler2));
+	              this.handler2.addObject(new enemy(this.r.nextInt(640), this.r.nextInt(477), ID.Enemy, this.handler2));
+	              this.handler2.addObject(new enemy(this.r.nextInt(640), this.r.nextInt(477), ID.Enemy, this.handler2));
+	              
+	              try {
+	            	    	Player.damage(290);
+	            	    	pass1 = 0;
+					}
+				catch (UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
               }
-          } } this.c++;
+          } this.c++;
           if (key == 32)
           this.handler2.addObject(new arrow(tempObject.getX(), tempObject.getY(), ID.ARROW, this.handler2)); 
-        if (key == 52);
+        
       } 
     } 
   }
