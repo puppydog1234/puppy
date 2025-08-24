@@ -4,8 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import logic.handler;
-import logic.enums.ID;
+import game.core.handler;
+import game.enums.ID;
 
 
 

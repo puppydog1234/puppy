@@ -8,8 +8,8 @@ import java.net.MalformedURLException;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-import logic.handler;
-import logic.enums.ID;
+import game.core.handler;
+import game.enums.ID;
 
 public class arrow extends gameObject {
   private handler handler;

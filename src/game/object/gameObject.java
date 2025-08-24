@@ -3,7 +3,7 @@ package game.object;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import logic.enums.ID;
+import game.enums.ID;
 
 public abstract class gameObject
 {

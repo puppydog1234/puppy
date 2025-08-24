@@ -4,10 +4,10 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import logic.Trail;
-import logic.handler;
-import logic.enums.ID;
-import logic.gui.HUD;
+import game.core.handler;
+import game.enums.ID;
+import game.gui.HUD;
+import game.logic.Trail;
 
 public class enemy
   extends gameObject {
