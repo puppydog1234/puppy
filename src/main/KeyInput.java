@@ -21,8 +21,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import gameobjects.Player;
-import gameobjects.enemy;
+import game.object.Player;
+import game.object.enemy;
 
 
 

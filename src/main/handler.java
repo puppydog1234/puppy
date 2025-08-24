@@ -3,7 +3,7 @@ package main;
 import java.awt.Graphics;
 import java.util.LinkedList;
 
-import gameobjects.Player;
+import game.object.Player;
 
 public class handler {
   public static LinkedList<gameObject> object = new LinkedList<>();

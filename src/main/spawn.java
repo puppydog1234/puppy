@@ -2,10 +2,10 @@ package main;
 
 import java.util.Random;
 
-import gameobjects.boss1;
-import gameobjects.enemy;
-import gameobjects.fastenemy;
-import gameobjects.smartenemy;
+import game.object.boss1;
+import game.object.enemy;
+import game.object.fastenemy;
+import game.object.smartenemy;
 
 public class spawn
 {

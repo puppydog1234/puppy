@@ -7,8 +7,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Random;
 
-import gameobjects.Player;
-import gameobjects.enemy;
+import game.object.Player;
+import game.object.enemy;
 import main.game.STATE;
 
 public class Menu2
