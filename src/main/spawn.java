@@ -46,7 +46,7 @@ public class spawn
     	  this.hud.won += 1;
       }}
       if (this.hud.getLevel() >= 100) {
-    	  if (game.gameState2 != main.game.STATE2.EASY) {
+    	  if (game.gameState2 == main.game.STATE2.EASY) {
     	  this.hud.won += 1;
       }}
       if (this.hud.getLevel() >= 301) {
