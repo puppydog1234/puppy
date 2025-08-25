@@ -4,24 +4,24 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import game.core.handler;
+import game.core.Handler;
 import game.enums.ID;
 import game.logic.Trail;
 
-public class smartenemy
-  extends gameObject
+public class SmartEnemy
+  extends GameObject
 {
-  private handler handler;
-  private gameObject player;
+  private final Handler handler;
+  private GameObject player;
   
-  public smartenemy(int x, int y, ID id, handler handler1) {
+  public SmartEnemy(int x, int y, ID id, Handler handler1) {
     super(x, y, id);
     
     this.handler = handler1;
     
-    for (int i = 0; i < handler.object.size(); i++) {
-      if (((gameObject)handler.object.get(i)).getID() == ID.Player) {
-        this.player = handler.object.get(i);
+    for (int i = 0; i < Handler.object.size(); i++) {
+      if (Handler.object.get(i).getID() == ID.Player) {
+        this.player = Handler.object.get(i);
       }
     } 
 

@@ -4,17 +4,17 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import game.core.handler;
+import game.core.Handler;
 import game.enums.ID;
 import game.gui.HUD;
 import game.logic.Trail;
 
-public class enemy
-  extends gameObject {
-  private handler handler;
+public class Enemy
+  extends GameObject {
+  private final Handler handler;
 
-  private HUD hud;
-  public enemy(int x, int y, ID id, handler handler1) {
+  private final HUD hud;
+  public Enemy(int x, int y, ID id, Handler handler1) {
     super(x, y, id);
     
     this.handler = handler1;
@@ -56,12 +56,14 @@ public class enemy
   
   public Rectangle getBounds() {
     return new Rectangle((int)this.x, (int)this.y, 24, 24);
-  } private void collision()  {
-	    for (int i = 0; i < handler.object.size(); i++) {
-	        gameObject tempObject = handler.object.get(i);
-	        if (tempObject.getID() == ID.ARROW) {
-	          getBounds().intersects(tempObject.getBounds()); 
+  }
+  private void collision()  {
+      for (int i = 0; i < Handler.object.size(); i++) {
+          GameObject tempObject = Handler.object.get(i);
+          if (tempObject.getID() == ID.ARROW) {
+              getBounds().intersects(tempObject.getBounds());
 	          this.handler.removeObject(this);
 	      } 
-	    }}
+      }
+  }
 }

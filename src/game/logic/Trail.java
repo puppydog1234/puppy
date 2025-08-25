@@ -6,21 +6,21 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-import game.core.handler;
+import game.core.Handler;
 import game.enums.ID;
-import game.object.gameObject;
+import game.object.GameObject;
 
 public class Trail
-  extends gameObject {
+  extends GameObject {
   private float alpha = 1.0F;
   
-  private handler handler;
-  private Color color;
-  private int width;
-  private int height;
-  private float life;
+  private final Handler handler;
+  private final Color color;
+  private final int width;
+  private final int height;
+  private final float life;
   
-  public Trail(float x, float y, ID id, Color color, int width, int height, float life, handler handler1) {
+  public Trail(float x, float y, ID id, Color color, int width, int height, float life, Handler handler1) {
     super(x, y, id);
     this.color = color;
     this.height = height;

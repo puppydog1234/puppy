@@ -5,24 +5,21 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Random;
 
-import game.core.game;
-import game.core.handler;
+import game.core.Game;
+import game.core.Handler;
 import game.enums.ID;
 import game.logic.Trail;
 
-public class boss1
-  extends gameObject {
-  private handler handler;
+public class Boss1
+  extends GameObject {
+  private final Handler handler;
   private int timer = 80;
   private int timer2 = 50;
   Random r = new Random();
   
-  public boss1(int x, int y, ID id, handler handler1) {
+  public Boss1(int x, int y, ID id, Handler handler1) {
     super(x, y, id);
-    
     this.handler = handler1;
-
-    
     this.velX = 0.0F;
     this.velY = 2.0F;
   }
@@ -50,12 +47,12 @@ public class boss1
       } else if (this.velX < 0.0F) {
         this.velX -= 0.005F;
       } 
-      this.velX = game.clamp(this.velX, -10, 10);
+      this.velX = Game.clamp(this.velX, -10, 10);
       
       int spawn = this.r.nextInt(120);
       if (spawn == 0) {
-          this.handler.addObject(new enemyBossBullet((int)this.x + 48, (int)this.y + 48, ID.Enemy, this.handler));
-          this.handler.addObject(new enemyBossBullet((int)this.x - 48, (int)this.y - 48, ID.Enemy, this.handler));
+          this.handler.addObject(new EnemyBossBullet((int)this.x + 48, (int)this.y + 48, ID.Enemy, this.handler));
+          this.handler.addObject(new EnemyBossBullet((int)this.x - 48, (int)this.y - 48, ID.Enemy, this.handler));
       }
     } 
     

@@ -5,9 +5,9 @@ import java.awt.Font;
 import java.awt.Graphics;
 
 import game.core.KeyInput;
-import game.core.game;
-import game.core.handler;
-import game.core.game.STATE;
+import game.core.Game;
+import game.core.Handler;
+import game.enums.STATE;
 
 public class HUD
 {
@@ -17,7 +17,7 @@ public class HUD
   private int lastLevelChecked = 1;
   private boolean staminaReduced = false;
   private Font fnt3;
-  private handler handler;
+  private Handler handler;
   private int score = 0;
   public int won = 0;
   private String won2 = "nope";
@@ -25,8 +25,8 @@ public class HUD
   private int level = 98;
   private boolean soundplayed = false;
   public static double stanima = 1200;
-  public void render(Graphics g, game.STATE gameState) {
-	    this.greenvalue = (int)game.clamp(this.greenvalue, 0, 255);
+  public void render(Graphics g, STATE gameState) {
+	    this.greenvalue = (int) Game.clamp(this.greenvalue, 0, 255);
     g.setColor(Color.gray);
     g.fillRect(15, 15, 600, 32);
     g.setColor(new Color(0, 255, 0));
@@ -40,11 +40,11 @@ public class HUD
     g.drawString("Score: " + this.score, 10, 68);
     g.drawString("Level: " + this.level, 10, 80);
     g.drawString("DID YOU WIN?: " + this.won2, 10, 102);
-    if (game.game.core.KeyInput.debug) {
+    if (KeyInput.debug) {
         g.drawString("debug mode", 10, 132);
     } if (KeyInput.LORE)
 	{
-        fnt3 = new Font("arial", 1, 30);
+        fnt3 = new Font("arial", Font.BOLD, 30);
         g.setFont(fnt3);
 		g.drawString("the white sqaure is the kid", 10, 170);
 		g.drawString("the red sqaures are the bullies", 10, 190);
@@ -54,7 +54,7 @@ public class HUD
 
     if (won >= 1) {
     	won2 ="YES YOU WON!";
-        fnt3 = new Font("arial", 1, 65);
+        fnt3 = new Font("arial", Font.BOLD, 65);
         g.setFont(fnt3);
         g.setColor(Color.green);
         g.drawString("YOU WON THE GAME", 2, 200);
@@ -66,9 +66,8 @@ public class HUD
   
 
 public void tick() throws Exception {
-    HEALTH = (int)game.clamp(HEALTH, 0, 300);
-    stanima = (int)game.clamp((int)stanima, 0, 1200);
-    this.greenvalue = (int)game.clamp(this.greenvalue, 0, 255);
+    HEALTH = (int) Game.clamp(HEALTH, 0, 300);
+    stanima = (int) Game.clamp((int)stanima, 0, 1200);
 
     this.greenvalue = HEALTH * 2;
     this.score++;
@@ -94,6 +93,7 @@ public void tick() throws Exception {
         System.exit(0);
     }
   }
+
   public void score(int score) {
     this.score = score;
   } public int getScore() {

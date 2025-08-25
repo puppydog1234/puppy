@@ -5,40 +5,59 @@ import java.awt.Rectangle;
 
 import game.enums.ID;
 
-public abstract class gameObject
-{
+public abstract class GameObject {
   protected float x;
   protected float y;
   
-  public gameObject(float x, float y, ID id) {
+  public GameObject(float x, float y, ID id) {
     this.x = x;
     this.y = y;
     this.id = id;
   }
+
   protected ID id; protected float velX; protected float velY;
   public abstract void tick();
   public abstract void render(Graphics paramGraphics);
 
   public abstract Rectangle getBounds();
+
   public void setX(float x) {
     this.x = x;
-  } public void setY(float y) {
+  }
+
+  public void setY(float y) {
     this.y = y;
-  } public float getX() {
+  }
+
+  public float getX() {
     return this.x;
-  } public float getY() {
+  }
+
+  public float getY() {
     return this.y;
-  } public void setID(ID id) {
+  }
+
+  public void setID(ID id) {
     this.id = id;
-  } public ID getID() {
+  }
+
+  public ID getID() {
     return this.id;
-  } public void setvelX(float velx) {
+  }
+
+  public void setvelX(float velx) {
     this.velX = velx;
-  } public void setvelY(float vely) {
+  }
+
+  public void setvelY(float vely) {
     this.velY = vely;
-  } public float getvelX() {
+  }
+
+  public float getvelX() {
     return this.velX;
-  } public float getvelY() {
+  }
+
+  public float getvelY() {
     return this.velY;
   }
 }

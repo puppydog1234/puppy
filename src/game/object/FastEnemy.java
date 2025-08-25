@@ -4,26 +4,21 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import game.core.handler;
+import game.core.Handler;
 import game.enums.ID;
 import game.logic.Trail;
 
-public class fastenemy
-  extends gameObject {
-  private handler handler;
+public class FastEnemy
+  extends GameObject {
+  private final Handler handler;
   
-  public fastenemy(int x, int y, ID id, handler handler1) {
+  public FastEnemy(int x, int y, ID id, Handler handler) {
     super(x, y, id);
-    
-    this.handler = handler1;
-
-    
+    this.handler = handler;
     this.velX = 9.0F;
     this.velY = 9.0F;
   }
 
-
-  
   public void tick() {
     this.x += this.velX;
     this.y += this.velY;

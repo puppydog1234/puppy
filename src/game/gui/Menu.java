@@ -5,21 +5,19 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Random;
 
-import game.core.game;
-import game.core.handler;
-import game.core.game.STATE;
+import game.core.Game;
+import game.core.Handler;
+import game.enums.STATE;
 
 public class Menu
   extends MouseAdapter
 {
-  game game;
-  private handler handler;
-  private Random r = new Random();
+  Game game;
+  private Handler handler;
   private HUD hud;
   
-  public Menu(game game1, handler handler1) {
+  public Menu(Game game1, Handler handler1) {
     this.handler = handler1;
     this.game = game1;
   }
@@ -63,8 +61,8 @@ public class Menu
 
   
   public void render(Graphics g) {
-    Font fnt = new Font("arial", 1, 50);
-    Font fnt2 = new Font("arial", 1, 30);
+    Font fnt = new Font("arial", Font.BOLD, 50);
+    Font fnt2 = new Font("arial", Font.BOLD, 30);
     g.setFont(fnt);
     g.setColor(Color.gray);
     g.drawString("Menu", 230, 60);

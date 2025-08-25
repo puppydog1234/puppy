@@ -1,31 +1,7 @@
 package game.enums;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-public enum STATE2
-{
+public enum STATE2 {
   NOPE,
   EASY,
-  HARD,
+  HARD
 }

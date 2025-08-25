@@ -4,54 +4,38 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
-import java.util.Random;
+import java.io.Serial;
 
+import game.enums.STATE;
+import game.enums.STATE2;
 import game.gui.HUD;
 import game.gui.Menu;
 import game.gui.Menu2;
+import game.gui.Window;
 
 
-public class game
-  extends Canvas
-  implements Runnable
-{
+public class Game extends Canvas implements Runnable {
+
   static final int WIDTH = 640;
   static final int HEIGHT = 477;
   private Thread thread;
   private boolean running = false;
-  private HUD hud;
+  private final HUD hud;
   public Graphics g;
-  int frames2 = 0;
+  int frames = 0;
   public static Graphics g2;
-  private spawn spawner;
-  private handler handler;
-  
-  private static void fake() {}
-  
-  private Random r = new Random();
-  private Menu menu;
+  private final Spawn spawner;
+  private final Handler handler;
+
+  private final Menu menu;
   public Menu2 menu2;
 
-  public enum STATE {
-    MENU,
-    MENU2,
-    GAME;
-  }
-  public enum STATE2
-  {
-    NOPE,
-    EASY,
-    HARD,
-  }
   public static STATE gameState = STATE.MENU2;
   public static STATE2 gameState2 = STATE2.NOPE;
 
-  public static void main(String[] args) throws Exception {
-	  new game();
-  }
   
-  public game() throws Exception {
-    this.handler = new handler();
+  public Game() {
+    this.handler = new Handler();
     this.menu = new Menu(this, this.handler);
     if (gameState == STATE.MENU2) {
         menu2 = new Menu2(this, this.handler);
@@ -59,11 +43,12 @@ public class game
     addKeyListener(new KeyInput(this.handler));
     addMouseListener(this.menu);
     addMouseListener(this.menu2);
-    new game.gui.window(WIDTH, HEIGHT, "the doger dager", this);
+    new Window(WIDTH, HEIGHT, "the doger dager", this);
     this.hud = new HUD();
-    this.spawner = new spawn(this.handler, this.hud);
+    this.spawner = new Spawn(this.handler, this.hud);
   }
   
+  @Serial
   private static final long serialVersionUID = -3462486173394796704L;
   
   public synchronized void start() {
@@ -75,8 +60,8 @@ public class game
     try {
       this.thread.join();
       this.running = false;
-    } catch (Exception e) {
-      e.printStackTrace();
+    } catch (Exception ignored) {
+      // sry. I dont wanna debug this shit
     } 
   }
 
@@ -89,7 +74,7 @@ public class game
     double ns = 1.0E9D / amountOfTicks;
     double delta = 0.0D;
     long timer = System.currentTimeMillis();
-    int frames = 0;
+
     while (this.running) {
       long now = System.nanoTime();
       delta += (now - lastTime) / ns;
@@ -98,20 +83,17 @@ public class game
         try {
           tick();
         } catch (Exception e) {
-          
           e.printStackTrace();
         } 
         delta--;
       }  if (this.running)
-        render(); 
+        render();
       frames++;
-      frames2++;
       
       if (System.currentTimeMillis() - timer > 1000L) {
         timer += 1000L;
-        
-        frames = 0;
-      } 
+
+      }
     } 
     stop();
   }
@@ -119,12 +101,12 @@ public class game
   private void tick() throws Exception {
     this.handler.tick();
     this.hud.tick();
-    if (this.gameState == STATE.GAME) {
+    if (gameState == STATE.GAME) {
       this.spawner.tick();
       removeMouseListener(menu2);
-    } else if (this.gameState == STATE.MENU) {
+    } else if (gameState == STATE.MENU) {
         this.menu.tick();
-      } else if (this.gameState == STATE.MENU2) {
+      } else if (gameState == STATE.MENU2) {
           this.menu2.tick();
       } 
   }
@@ -139,16 +121,16 @@ public class game
     g.setColor(Color.black);
     g.fillRect(0, 0, 640, 477);
     this.handler.render(g);
-    if (this.gameState == STATE.GAME) {
+    if (gameState == STATE.GAME) {
         g.setColor(Color.black);
         g.fillRect(0, 0, 640, 477);
         this.handler.render(g);
       this.hud.render(g, gameState);
-    } else if (this.gameState == STATE.MENU) {
+    } else if (gameState == STATE.MENU) {
       this.menu.render(g);
-    }  else if (this.gameState == STATE.MENU2) {
+    }  else if (gameState == STATE.MENU2) {
     
-    game.gui.Menu2.render(game.g2);
+    Menu2.render(Game.g2);
     }
     g.dispose();
     bs.show();
@@ -156,10 +138,14 @@ public class game
   
   public static float clamp(float y, int min, int max) {
     if (y >= max)
-      return (int)(y = max); 
+      return max;
     if (y <= min) {
-      return (int)(y = min);
+      return min;
     }
     return y;
+  }
+
+  public static void main(String[] args) {
+    new Game();
   }
 }

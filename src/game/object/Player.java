@@ -9,53 +9,30 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 import game.core.KeyInput;
-import game.core.game;
-import game.core.handler;
+import game.core.Game;
+import game.core.Handler;
 import game.enums.ID;
 import game.gui.HUD;
 import game.logic.Trail;
 
+public class Player extends GameObject {
+  Handler handler2;
 
-
-
-
-
-
-
-
-
-public class Player
-  extends gameObject
-{
-  handler handler2;
-  public <F> Player(int x, int y, ID id, handler handler1) throws Exception {
+  public Player(int x, int y, ID id, Handler handler1) {
     super(x, y, id);
     this.handler2 = handler1;
   }
 
-
-
-  
   public void tick() {
     this.x += this.velX;
     this.y += this.velY;
-    this.x = game.clamp(this.x, 0, 608);
-    this.y = game.clamp(this.y, 40, 445);
+    this.x = Game.clamp(this.x, 0, 608);
+    this.y = Game.clamp(this.y, 40, 445);
     
     try {
       collision();
-    } catch (MalformedURLException e) {
-      
-      e.printStackTrace();
-    } catch (UnsupportedAudioFileException e) {
-      
-      e.printStackTrace();
-    } catch (IOException e) {
-      
-      e.printStackTrace();
-    } catch (LineUnavailableException e) {
-      
-      e.printStackTrace();
+    } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+        e.printStackTrace();
     }  
 	try {
 		if (KeyInput.nodamage) {
@@ -68,9 +45,9 @@ public class Player
 		e.printStackTrace();
 	}}
   
-  private void collision() throws MalformedURLException, UnsupportedAudioFileException, IOException, LineUnavailableException {
-    for (int i = 0; i < handler.object.size(); i++) {
-      gameObject tempObject = handler.object.get(i);
+  private void collision() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+    for (int i = 0; i < Handler.object.size(); i++) {
+      GameObject tempObject = Handler.object.get(i);
       if ((tempObject.getID() == ID.Enemy || tempObject.getID() == ID.fastenemy || tempObject.getID() == ID.smartenemy) && 
         getBounds().intersects(tempObject.getBounds()) && 
         !KeyInput.nodamage && !KeyInput.nopedamage) {
@@ -86,7 +63,7 @@ public class Player
     } 
   }
   
-  public static void damage(int d) throws MalformedURLException, UnsupportedAudioFileException, IOException, LineUnavailableException {
+  public static void damage(int d) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
     HUD.HEALTH -= d;
   }
 

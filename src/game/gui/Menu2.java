@@ -7,68 +7,67 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Random;
 
-import game.core.game;
-import game.core.handler;
-import game.core.spawn;
-import game.core.game.STATE;
-import game.core.game.STATE2;
+import game.core.Game;
+import game.core.Handler;
+import game.core.Spawn;
 import game.enums.ID;
+import game.enums.STATE;
+import game.enums.STATE2;
 import game.object.Player;
-import game.object.enemy;
+import game.object.Enemy;
 
 public class Menu2
-  extends MouseAdapter
-{
-	game game;
-  private handler handler;
+  extends MouseAdapter {
+	Game game;
+  private Handler handler;
   private Random r = new Random();
-  private spawn spawner;
+  private Spawn spawner;
   private HUD hud;
   
-  public Menu2(core.game game2, handler handler1) {
+  public Menu2(Game game2, Handler handler1) {
     this.handler = handler1;
-    this.spawner = new spawn(handler, hud);
+    this.spawner = new Spawn(handler, hud);
   }
   
   public void mousePressed(MouseEvent e) {
     int mx = e.getX();
     int my = e.getY();
-    if (game.gameState!=STATE.GAME) {
+    if (game.gameState != STATE.GAME) {
     if (mouseOver(mx, my, 200, 150, 200, 64)) {
         try {
-			game.game.gameState2 = game.game.STATE2.EASY;
+			game.gameState2 = STATE2.EASY;
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
         try {
-				game.game.gameState = STATE.GAME;
+				game.gameState = STATE.GAME;
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
         try {
           this.handler.addObject(new Player(640 / 2 - 32, 477 / 2 - 32, ID.Player, this.handler));
-          this.handler.addObject(new enemy(this.r.nextInt(640 - 50), this.r.nextInt(477 - 50), ID.Enemy, this.handler));
+          this.handler.addObject(new Enemy(this.r.nextInt(640 - 50), this.r.nextInt(477 - 50), ID.Enemy, this.handler));
         } catch (Exception e1) {
           e1.printStackTrace();
         }
     } else if (mouseOver(mx, my, 200, 250, 200, 64)) {
         try {
-			game.gameState2 = game.game.STATE2.HARD;
+			game.gameState2 = STATE2.HARD;
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
         try {
-			this.game.gameState = game.game.STATE.GAME;
+			this.game.gameState = STATE.GAME;
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
         try {
           this.handler.addObject(new Player(640 / 2 - 32, 477 / 2 - 32, ID.Player, this.handler));
-          this.handler.addObject(new enemy(this.r.nextInt(640 - 50), this.r.nextInt(477 - 50), ID.Enemy, this.handler));
+          this.handler.addObject(new Enemy(this.r.nextInt(640 - 50), this.r.nextInt(477 - 50), ID.Enemy, this.handler));
         } catch (Exception e1) {
           e1.printStackTrace();
         }

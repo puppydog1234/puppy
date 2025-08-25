@@ -5,22 +5,19 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Random;
 
-import game.core.handler;
+import game.core.Handler;
 import game.enums.ID;
 import game.logic.Trail;
 
-public class enemyBossBullet
-  extends gameObject {
-  private handler handler;
+public class EnemyBossBullet
+  extends GameObject {
+  private final Handler handler;
   Random r = new Random();
   
-  public enemyBossBullet(int x, int y, ID id, handler handler1) {
+  public EnemyBossBullet(int x, int y, ID id, Handler handler) {
     super(x, y, id);
-    
-    this.handler = handler1;
-
-    
-    this.velX = (this.r.nextInt(10) + -5);
+    this.handler = handler;
+    this.velX = (this.r.nextInt(10) - 5);
     this.velY = 5.0F;
   }
 
