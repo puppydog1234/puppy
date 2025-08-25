@@ -1,10 +1,13 @@
 package game.core;
 
+import java.applet.AudioClip;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.io.Serial;
+
+import javax.sound.sampled.AudioSystem;
 
 import game.enums.STATE;
 import game.enums.STATE2;
@@ -40,6 +43,8 @@ public class Game extends Canvas implements Runnable {
     if (gameState == STATE.MENU2) {
         menu2 = new Menu2(this, this.handler);
     }
+
+    
     addKeyListener(new KeyInput(this.handler));
     addMouseListener(this.menu);
     addMouseListener(this.menu2);
