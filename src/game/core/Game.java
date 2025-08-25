@@ -39,7 +39,7 @@ public class Game extends Canvas implements Runnable {
   
   public Game() {
     this.handler = new Handler();
-    this.menu = new Menu(this, this.handler);
+    this.menu = new Menu(this, this.handler); // this is the menu that needs to goto menu2.
     if (gameState == STATE.MENU2) {
         menu2 = new Menu2(this, this.handler);
     }
