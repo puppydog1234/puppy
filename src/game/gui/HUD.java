@@ -22,7 +22,7 @@ public class HUD
   public int won = 0;
   private String won2 = "nope";
   public static String customt;
-  private int level = 98;
+  private int level = 1;
   private boolean soundplayed = false;
   public static double stanima = 1200;
   public void render(Graphics g, STATE gameState) {
