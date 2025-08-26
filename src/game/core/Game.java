@@ -130,15 +130,13 @@ public class Game extends Canvas implements Runnable {
           this.menu2.tick();
       } 
 	musicMap.put("music", new Music("/res/song.wav"));
-	if (!musicMap.get("music").playing()) {
-		if (count >= 100000) {
+		if (count >= 5600) {
 		musicMap.put("music", new Music("/res/tell-me-what-379638.wav"));
 		musicMap.get("music").loop();
 		musicMap.get("music").play();
-		count = 0;
 		}
 		count += 1;
-	}
+	
   }
   private void render() {
     BufferStrategy bs = getBufferStrategy();
