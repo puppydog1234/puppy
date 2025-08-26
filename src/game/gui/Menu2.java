@@ -23,6 +23,7 @@ public class Menu2
   private Random r = new Random();
   private Spawn spawner;
   private HUD hud;
+  private static boolean play = false;
   
   public Menu2(Game game2, Handler handler1) {
     this.handler = handler1;
@@ -33,7 +34,9 @@ public class Menu2
     int mx = e.getX();
     int my = e.getY();
     if (game.gameState != STATE.GAME) {
+
     if (mouseOver(mx, my, 200, 150, 200, 64)) {
+    	if (!play) {
         try {
 			game.gameState2 = STATE2.EASY;
 		} catch (Exception e1) {
@@ -51,26 +54,33 @@ public class Menu2
           this.handler.addObject(new Enemy(this.r.nextInt(640 - 50), this.r.nextInt(477 - 50), ID.Enemy, this.handler));
         } catch (Exception e1) {
           e1.printStackTrace();
-        }
+        }}
+    	play = true;
     } else if (mouseOver(mx, my, 200, 250, 200, 64)) {
         try {
+        	if (!play) {
 			game.gameState2 = STATE2.HARD;
+        	}
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
         try {
+        	if (!play) {
 			this.game.gameState = STATE.GAME;
+        	}
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
         try {
+        	if (!play) {
           this.handler.addObject(new Player(640 / 2 - 32, 477 / 2 - 32, ID.Player, this.handler));
           this.handler.addObject(new Enemy(this.r.nextInt(640 - 50), this.r.nextInt(477 - 50), ID.Enemy, this.handler));
-        } catch (Exception e1) {
+        	}} catch (Exception e1) {
           e1.printStackTrace();
         }
+        play = true;
     } }
   }
 

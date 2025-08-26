@@ -6,8 +6,14 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.io.Serial;
+import java.rmi.server.LoaderHandler;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.sound.sampled.AudioSystem;
+
+import org.newdawn.slick.Music;
+import org.newdawn.slick.Sound;
 
 import game.enums.STATE;
 import game.enums.STATE2;
@@ -15,7 +21,6 @@ import game.gui.HUD;
 import game.gui.Menu;
 import game.gui.Menu2;
 import game.gui.Window;
-
 
 public class Game extends Canvas implements Runnable {
 
@@ -33,17 +38,27 @@ public class Game extends Canvas implements Runnable {
   private final Menu menu;
   public Menu2 menu2;
 
+	public static Map<String , Sound> soundMap = new HashMap<String, Sound>();
+	public static Map<String, Music> musicMap = new HashMap<String, Music>();
+	int count = 0;
   public static STATE gameState = STATE.MENU2;
   public static STATE2 gameState2 = STATE2.NOPE;
-
   
   public Game() {
     this.handler = new Handler();
     this.menu = new Menu(this, this.handler);
     if (gameState == STATE.MENU2) {
         menu2 = new Menu2(this, this.handler);
+        
     }
-
+    try {
+		musicMap.put("music", new Music("/res/song.wav"));
+		musicMap.get("music").loop();
+		musicMap.get("music").play();
+		} catch (Exception e) {
+            e.printStackTrace();
+		}
+	
     
     addKeyListener(new KeyInput(this.handler));
     addMouseListener(this.menu);
@@ -114,6 +129,16 @@ public class Game extends Canvas implements Runnable {
       } else if (gameState == STATE.MENU2) {
           this.menu2.tick();
       } 
+	musicMap.put("music", new Music("/res/song.wav"));
+	if (!musicMap.get("music").playing()) {
+		if (count >= 100000) {
+		musicMap.put("music", new Music("/res/tell-me-what-379638.wav"));
+		musicMap.get("music").loop();
+		musicMap.get("music").play();
+		count = 0;
+		}
+		count += 1;
+	}
   }
   private void render() {
     BufferStrategy bs = getBufferStrategy();

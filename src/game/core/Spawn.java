@@ -49,16 +49,12 @@ public class Spawn
               this.handler.addObject(new Enemy(this.r.nextInt(620), this.r.nextInt(457), ID.Enemy, this.handler));
           this.c1 = 0;
       }}
-      if (this.hud.getLevel() >= 74) {
-    	  if (Game.gameState2 == STATE2.EASY) {
-    	  this.hud.won += 1;
-      }}
-      if (this.hud.getLevel() >= 100) {
+      if (this.hud.getLevel() >= 115) {
     	  if (Game.gameState2 == STATE2.EASY) {
     	  this.hud.won += 1;
     	  ending();
       }}
-      if (this.hud.getLevel() >= 301) {
+      if (this.hud.getLevel() >= 400) {
     	  if (Game.gameState2 == STATE2.HARD) {
     	  this.hud.won += 1;
     	  ending();

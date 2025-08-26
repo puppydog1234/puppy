@@ -75,12 +75,12 @@ public void tick() throws Exception {
     if (KeyInput.isCapsLockOn) {
     stanima = Math.max(0, stanima - 5);
     }
-    if (stanima == 0) {
+    if (stanima < 1200 && !KeyInput.dashing) {
     	KeyInput.isCapsLockOn2 = false;
 	}
 	if (stanima >= 1200) {
 		KeyInput.isCapsLockOn2 = true;
-	} if (stanima < 1200 && !KeyInput.isCapsLockOn2) {
+	} if (stanima < 1200 && !KeyInput.isCapsLockOn) {
 		stanima = Math.min(1200, stanima + 1);
 	}
     if (HEALTH < 5 && !this.soundplayed) {
