@@ -1,5 +1,5 @@
 package game.core;
-
+// imports
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -20,8 +20,8 @@ import game.gui.Window;
 
 public class Game extends Canvas implements Runnable {
 
-    static final int WIDTH = 640;
-    static final int HEIGHT = 477;
+    static final int WIDTH = 640; // set window width
+    static final int HEIGHT = 477; // set window height
 
     private Thread thread;
     private boolean running = false;
@@ -42,8 +42,8 @@ public class Game extends Canvas implements Runnable {
     private int frames = 0;
     private int count = 0;
 
-    public static STATE gameState = STATE.MENU2;
-    public static STATE2 gameState2 = STATE2.NOPE;
+    public static STATE gameState = STATE.MENU2; // gamestate can be MENU, MENU2, or GAME. check STATE enum in files for more
+    public static STATE2 gameState2 = STATE2.NOPE; // can be NOPE, EASY, or HARD.
 
     @Serial
     private static final long serialVersionUID = -3462486173394796704L;
@@ -89,8 +89,7 @@ public class Game extends Canvas implements Runnable {
 
         addMouseListener(this.menu);
         addMouseListener(this.menu2);
-
-        new Window(WIDTH, HEIGHT, "the doger dager", this);
+        new Window(WIDTH, HEIGHT, "the doger dager", this); // call windows
     }
 
     public synchronized void start() {
@@ -117,7 +116,7 @@ public class Game extends Canvas implements Runnable {
         double delta = 0;
         long timer = System.currentTimeMillis();
 
-        while (running) {
+        while (running) { // run tick clock
             long now = System.nanoTime();
             delta += (now - lastTime) / ns;
             lastTime = now;
@@ -142,7 +141,7 @@ public class Game extends Canvas implements Runnable {
         stop();
     }
 
-    private void tick() throws Exception {
+    private void tick() throws Exception {// run these every tick.
         handler.tick();
         hud.tick();
 
@@ -181,7 +180,7 @@ public class Game extends Canvas implements Runnable {
         count++;
     }
 
-    private void render() {
+    private void render() {// what to put on screen
         BufferStrategy bs = getBufferStrategy();
         if (bs == null) {
             createBufferStrategy(3);
@@ -209,13 +208,13 @@ public class Game extends Canvas implements Runnable {
         bs.show();
     }
 
-    public static float clamp(float value, int min, int max) {
+    public static float clamp(float value, int min, int max) {// keep value between min and max
         if (value >= max) return max;
         if (value <= min) return min;
         return value;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {// when run
         new Game();
     }
 }

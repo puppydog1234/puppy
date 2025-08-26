@@ -11,6 +11,10 @@ import game.enums.STATE;
 
 public class HUD
 {
+  /* this has the health and stanima bars
+    and also the level score and win and debug text
+    and has logic for almost all of it.
+  */
   public static int HEALTH = 300;
   public int c1 = 0;
   private int greenvalue = 255;
@@ -94,13 +98,13 @@ public void tick() throws Exception {
     }
   }
 
-  public void score(int score) {
+  public void score(int score) {//set score
     this.score = score;
-  } public int getScore() {
+  } public int getScore() {//get score
     return this.score;
-  } public int getLevel() {
+  } public int getLevel() {//get level
     return this.level;
-  } public void setLevel(int level) {
+  } public void setLevel(int level) {// set level
     this.level = level;
   }
 }

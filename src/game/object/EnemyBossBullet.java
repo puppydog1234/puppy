@@ -14,7 +14,7 @@ public class EnemyBossBullet
   private final Handler handler;
   Random r = new Random();
   
-  public EnemyBossBullet(int x, int y, ID id, Handler handler) {
+  public EnemyBossBullet(int x, int y, ID id, Handler handler) {//THE BOSS BULLETS!
     super(x, y, id);
     this.handler = handler;
     this.velX = (this.r.nextInt(10) - 5);

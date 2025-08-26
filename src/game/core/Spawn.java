@@ -22,7 +22,7 @@ public class Spawn
   private int c2;
   Enemy en1;
   
-  public Spawn(Handler handler2, HUD hud) {
+  public Spawn(Handler handler2, HUD hud) {// check level and do stuff when a level is a certian number.
     this.c = 0;
     this.en1 = new Enemy(this.r.nextInt(620), this.r.nextInt(457), ID.Enemy, this.handler);
     this.handler = handler2;
@@ -69,7 +69,8 @@ public class Spawn
         this.handler.addObject(new GoodPotion(this.r.nextInt(590), this.r.nextInt(427), ID.goodPotion, this.handler));
         this.c = 0;
       } 
-      this.c++;
+      //count up.
+      this.c++; 
       this.c1++;
       this.c2++;
     }  }

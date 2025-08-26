@@ -11,7 +11,7 @@ import game.enums.ID;
 import game.object.GameObject;
 
 public class Trail
-  extends GameObject {
+  extends GameObject { // this is to make a trail follow the game objects
   private float alpha = 1.0F;
   
   private final Handler handler;

@@ -12,7 +12,7 @@ public class FastEnemy
   extends GameObject {
   private final Handler handler;
   
-  public FastEnemy(int x, int y, ID id, Handler handler) {
+  public FastEnemy(int x, int y, ID id, Handler handler) {// the fast gray enemys.
     super(x, y, id);
     this.handler = handler;
     this.velX = 9.0F;

@@ -43,7 +43,7 @@ public class KeyInput extends KeyAdapter {
 
     public static boolean nodamage = false;
    int c1 = 0;
-  public void keyPressed(KeyEvent keyEvent) {
+  public void keyPressed(KeyEvent keyEvent) { // conditions for key input
     int key = keyEvent.getKeyCode();
     for (int i = 0; i < Handler.object.size(); i++) {
       GameObject tempObject = Handler.object.get(i);

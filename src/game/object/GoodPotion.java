@@ -10,7 +10,7 @@ import game.enums.ID;
 
 
 
-public class GoodPotion extends GameObject {
+public class GoodPotion extends GameObject {// heals the player to 100% health.
   private final Handler handler;
   
   public GoodPotion(int x, int y, ID id, Handler handler1) {

@@ -15,7 +15,7 @@ import game.enums.ID;
 import game.gui.HUD;
 import game.logic.Trail;
 
-public class Player extends GameObject {
+public class Player extends GameObject {// you the player.(or coder)
   Handler handler2;
 
   public Player(int x, int y, ID id, Handler handler1) {

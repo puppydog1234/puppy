@@ -11,7 +11,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import game.core.Handler;
 import game.enums.ID;
 
-public class Arrow extends GameObject {
+public class Arrow extends GameObject {// unused arrows that pops up when you press space.
   private final Handler handler;
 
   public Arrow(float f, float g, ID id, Handler handler1) {

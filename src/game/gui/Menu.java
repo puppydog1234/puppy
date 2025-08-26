@@ -12,7 +12,7 @@ import game.enums.STATE;
 
 public class Menu
   extends MouseAdapter
-{
+{// this is a unused class that has play and quit buttons
   Game game;
   private Handler handler;
   private HUD hud;

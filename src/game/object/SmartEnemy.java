@@ -14,7 +14,7 @@ public class SmartEnemy
   private final Handler handler;
   private GameObject player;
   
-  public SmartEnemy(int x, int y, ID id, Handler handler1) {
+  public SmartEnemy(int x, int y, ID id, Handler handler1) { // the dumb smart enemy. (unused)
     super(x, y, id);
     
     this.handler = handler1;

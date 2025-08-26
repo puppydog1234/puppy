@@ -14,7 +14,7 @@ public class Enemy
   private final Handler handler;
 
   private final HUD hud;
-  public Enemy(int x, int y, ID id, Handler handler1) {
+  public Enemy(int x, int y, ID id, Handler handler1) {//the red enemys
     super(x, y, id);
     
     this.handler = handler1;

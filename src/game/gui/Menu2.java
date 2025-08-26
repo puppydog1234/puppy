@@ -17,7 +17,7 @@ import game.object.Player;
 import game.object.Enemy;
 
 public class Menu2
-  extends MouseAdapter {
+  extends MouseAdapter {// this is to select the diffilculty(aka gamestate2)
 	Game game;
   private Handler handler;
   private Random r = new Random();

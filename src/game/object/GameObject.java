@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 
 import game.enums.ID;
 
-public abstract class GameObject {
+public abstract class GameObject {// the core of all game objects
   protected float x;
   protected float y;
   

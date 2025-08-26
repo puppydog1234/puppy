@@ -11,7 +11,7 @@ import game.enums.ID;
 import game.logic.Trail;
 
 public class Boss1
-  extends GameObject {
+  extends GameObject { // the BOSS!
   private final Handler handler;
   private int timer = 80;
   private int timer2 = 50;
