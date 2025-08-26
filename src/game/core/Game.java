@@ -81,7 +81,9 @@ public class Game extends Canvas implements Runnable {
       this.thread.join();
       this.running = false;
     } catch (Exception ignored) {
-      // sry. I dont wanna debug this shit
+      // sry. I dont wanna debug this part -- anoumous
+      // just ingnore the start and stop method -- puppydog/jayden
+    
     } 
   }
 
