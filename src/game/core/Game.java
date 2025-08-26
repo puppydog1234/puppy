@@ -36,7 +36,6 @@ public class Game extends Canvas implements Runnable {
     public static Graphics g2;
     private Graphics g;
 
-    // Sound and music maps
     public static Map<String, Sound> soundMap = new HashMap<>();
     public static Map<String, Music> musicMap = new HashMap<>();
 
@@ -55,7 +54,7 @@ public class Game extends Canvas implements Runnable {
         this.spawner = new Spawn(this.handler, this.hud);
 
         this.menu = new Menu(this, this.handler);
-        this.menu2 = new Menu2(this, this.handler); // always initialized safely
+        this.menu2 = new Menu2(this, this.handler);
 
         // Load background music
         try {
@@ -76,7 +75,18 @@ public class Game extends Canvas implements Runnable {
             e.printStackTrace();
         }
 
-        addKeyListener(new KeyInput(this.handler));
+        // Key and mouse inputs
+        addKeyListener(new KeyInput(this.handler) {
+            @Override
+            public void keyPressed(java.awt.event.KeyEvent e) {
+                super.keyPressed(e);
+                // Play tap sound whenever any key is pressed
+                if (soundMap.containsKey("tap")) {
+                    soundMap.get("tap").play();
+                }
+            }
+        });
+
         addMouseListener(this.menu);
         addMouseListener(this.menu2);
 
@@ -136,6 +146,13 @@ public class Game extends Canvas implements Runnable {
         handler.tick();
         hud.tick();
 
+        // Example: simulate treasure event
+        if (hud.getScore() > 0 && hud.getScore() % 100 == 0) {
+            if (soundMap.containsKey("treasure")) {
+                soundMap.get("treasure").play();
+            }
+        }
+
         if (gameState == STATE.GAME) {
             spawner.tick();
             removeMouseListener(menu2);
@@ -155,6 +172,12 @@ public class Game extends Canvas implements Runnable {
                 e.printStackTrace();
             }
         }
+
+        // Example: simulate fail state
+        if (hud.getHealth() <= 0 && soundMap.containsKey("fail")) {
+            soundMap.get("fail").play();
+        }
+
         count++;
     }
 
