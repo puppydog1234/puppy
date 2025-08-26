@@ -33,13 +33,16 @@ public class Spawn
       this.hud.setLevel(this.hud.getLevel() + 1);
       if (this.hud.getLevel() == 5)
         this.handler.addObject(new FastEnemy(this.r.nextInt(620), this.r.nextInt(457), ID.fastenemy, this.handler));
-      if (this.hud.getLevel() == 8 || this.hud.getLevel() == 6)
+      if (this.hud.getLevel() == 8 || this.hud.getLevel() == 6) {
         this.handler.addObject(new Enemy(this.r.nextInt(620), this.r.nextInt(457), ID.Enemy, this.handler));
+      
       if (this.hud.getLevel() == 12) {
         this.handler.clearEnemy();
         this.handler.addObject(new Boss1(272, -120, ID.Enemy, this.handler));
-      }  if (this.hud.getLevel() == 24) {
+      }  if (this.hud.getLevel() == 26) {
         this.handler.clearEnemy();
+        AudioPlayer.loadSound("bgm", "res/tell-me-what-379638.wav");
+        AudioPlayer.playSound("bgm"); }
         this.handler.addObject(new Enemy(this.r.nextInt(620), this.r.nextInt(457), ID.Enemy, this.handler));
       }  if (this.hud.getLevel() == 34) {
         this.handler.addObject(new Enemy(this.r.nextInt(620), this.r.nextInt(457), ID.Enemy, this.handler));

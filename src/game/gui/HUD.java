@@ -106,5 +106,7 @@ public void tick() throws Exception {
     return this.level;
   } public void setLevel(int level) {// set level
     this.level = level;
-  }
+  } public int getHealth() {//get score
+	    return this.HEALTH;
+	  }
 }

@@ -8,7 +8,7 @@ import java.io.Serial;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.newdawn.slick.Music;
+import org.newdawn.slick.*;
 import org.newdawn.slick.Sound;
 
 import game.enums.STATE;
@@ -58,22 +58,23 @@ public class Game extends Canvas implements Runnable {
 
         // Load background music
         try {
-            musicMap.put("main", new Music("res/song.wav"));
-            musicMap.get("main").loop();
         } catch (Exception e) {
             System.err.println("Failed to load background music: " + e.getMessage());
             e.printStackTrace();
         }
 
-        // Load sound effects
-        try {
-            soundMap.put("tap", new Sound("res/mixkit-game-ball-tap-2073.wav"));
-            soundMap.put("treasure", new Sound("res/mixkit-video-game-treasure-2066.wav"));
-            soundMap.put("fail", new Sound("res/mixkit-player-losing-or-failing-2042.wav"));
-        } catch (Exception e) {
-            System.err.println("Failed to load sound effects: " + e.getMessage());
-            e.printStackTrace();
-        }
+
+     // In Game.java constructor, replace sound loading:
+     AudioPlayer.loadSound("tap", "res/mixkit-game-ball-tap-2073.wav");
+     AudioPlayer.loadSound("treasure", "res/mixkit-video-game-treasure-2066.wav");
+     AudioPlayer.loadSound("fail", "res/mixkit-player-losing-or-failing-2042.wav");
+
+     // In keyPressed:
+
+
+     // For background music (looping):
+     AudioPlayer.loadSound("bgm", "res/song.wav");
+     AudioPlayer.playSound("bgm");
 
         // Key and mouse inputs
         addKeyListener(new KeyInput(this.handler) {
@@ -82,7 +83,7 @@ public class Game extends Canvas implements Runnable {
                 super.keyPressed(e);
                 // Play tap sound whenever any key is pressed
                 if (soundMap.containsKey("tap")) {
-                    soundMap.get("tap").play();
+                    AudioPlayer.playSound("tap");
                 }
             }
         });
@@ -148,7 +149,7 @@ public class Game extends Canvas implements Runnable {
         // Example: simulate treasure event
         if (hud.getScore() > 0 && hud.getScore() % 100 == 0) {
             if (soundMap.containsKey("treasure")) {
-                soundMap.get("treasure").play();
+                AudioPlayer.playSound("treasure");
             }
         }
 
@@ -162,19 +163,10 @@ public class Game extends Canvas implements Runnable {
         }
 
         // After ~5600 ticks (~93 seconds), switch background music once
-        if (count == 5600) {
-            try {
-                musicMap.put("main", new Music("res/tell-me-what-379638.wav"));
-                musicMap.get("main").loop();
-            } catch (Exception e) {
-                System.err.println("Failed to load alternate music: " + e.getMessage());
-                e.printStackTrace();
-            }
-        }
 
         // Example: simulate fail state
         if (hud.getHealth() <= 0 && soundMap.containsKey("fail")) {
-            soundMap.get("fail").play();
+            AudioPlayer.playSound("fail");
         }
 
         count++;
