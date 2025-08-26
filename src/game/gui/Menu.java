@@ -28,7 +28,6 @@ public class Menu
     
 
 
-    game.menu2 = new Menu2(game, handler);
       this.game.gameState = STATE.MENU2;
       //this.game.gameState = STATE.GAME;
       try {
