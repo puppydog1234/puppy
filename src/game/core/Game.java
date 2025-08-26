@@ -36,6 +36,7 @@ public class Game extends Canvas implements Runnable {
     public static Graphics g2;
     private Graphics g;
 
+    // Sound and music maps
     public static Map<String, Sound> soundMap = new HashMap<>();
     public static Map<String, Music> musicMap = new HashMap<>();
 
@@ -56,12 +57,22 @@ public class Game extends Canvas implements Runnable {
         this.menu = new Menu(this, this.handler);
         this.menu2 = new Menu2(this, this.handler); // always initialized safely
 
-        // Load and start background music once
+        // Load background music
         try {
             musicMap.put("main", new Music("res/song.wav"));
             musicMap.get("main").loop();
         } catch (Exception e) {
-            System.err.println("Failed to load music: " + e.getMessage());
+            System.err.println("Failed to load background music: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        // Load sound effects
+        try {
+            soundMap.put("tap", new Sound("res/mixkit-game-ball-tap-2073.wav"));
+            soundMap.put("treasure", new Sound("res/mixkit-video-game-treasure-2066.wav"));
+            soundMap.put("fail", new Sound("res/mixkit-player-losing-or-failing-2042.wav"));
+        } catch (Exception e) {
+            System.err.println("Failed to load sound effects: " + e.getMessage());
             e.printStackTrace();
         }
 
@@ -83,7 +94,7 @@ public class Game extends Canvas implements Runnable {
             thread.join();
             running = false;
         } catch (Exception ignored) {
-            // Ignore errors when stopping thread
+            // ignore thread shutdown errors
         }
     }
 
@@ -134,7 +145,7 @@ public class Game extends Canvas implements Runnable {
             menu2.tick();
         }
 
-        // After some time, switch background music (only once)
+        // After ~5600 ticks (~93 seconds), switch background music once
         if (count == 5600) {
             try {
                 musicMap.put("main", new Music("res/tell-me-what-379638.wav"));
