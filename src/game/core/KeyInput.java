@@ -49,7 +49,6 @@ public class KeyInput extends KeyAdapter {
       GameObject tempObject = Handler.object.get(i);
       
       if (tempObject.getID() == ID.Player) {
-        
         boolean pressw = (key == 87 || key == 38);
         boolean presss = (key == 83 || key == 40);
         boolean pressa = (key == 65 || key == 38);
@@ -93,6 +92,11 @@ public class KeyInput extends KeyAdapter {
             e.printStackTrace();
           }
         }
+
+        if (key == 77 && debug) {
+            System.exit(1);
+        }
+
         if (key == 36) {
         	debug = true;
         }

@@ -44,6 +44,7 @@ public class Game extends Canvas implements Runnable {
 
     public static STATE gameState = STATE.MENU2; // gamestate can be MENU, MENU2, or GAME. check STATE enum in files for more
     public static STATE2 gameState2 = STATE2.NOPE; // can be NOPE, EASY, or HARD.
+    boolean isDebug = java.lang.management.ManagementFactory.getRuntimeMXBean(). getInputArguments().toString().contains("-agentlib:jdwp");
 
     @Serial
     private static final long serialVersionUID = -3462486173394796704L;
@@ -52,7 +53,7 @@ public class Game extends Canvas implements Runnable {
         this.handler = new Handler();
         this.hud = new HUD();
         this.spawner = new Spawn(this.handler, this.hud);
-
+        new game.devchat();
         this.menu = new Menu(this, this.handler);
         this.menu2 = new Menu2(this, this.handler);
 
@@ -145,7 +146,6 @@ public class Game extends Canvas implements Runnable {
     private void tick() throws Exception {// run these every tick.
         handler.tick();
         hud.tick();
-
         // Example: simulate treasure event
         if (hud.getScore() > 0 && hud.getScore() % 100 == 0) {
             if (soundMap.containsKey("treasure")) {
@@ -170,6 +170,9 @@ public class Game extends Canvas implements Runnable {
         }
 
         count++;
+        if (this.isDebug) {
+            KeyInput.debug = true;
+        }
     }
 
     private void render() {// what to put on screen
